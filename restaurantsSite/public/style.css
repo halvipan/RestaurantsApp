@@ -1,36 +1,60 @@
-.card {
-    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
-    text-align: center;
-    background-size: cover;
-    height: 20rem;
-    border: solid black 2px;
-    margin: 1rem;
-}
-
-.card h1 {
-    background-color: rgba(0, 0, 0, 0.5);
-    transform: translate(0, 8rem);
-    font-size: 25px;
+body {
+    background-color: black;
     color: white;
 }
+
+.header {
+    border-bottom: 2px rgb(78, 78, 78) solid;
+    height: 10vh;
+}
+
+section {
+    padding: 2vh;
+    display: grid;
+}
+
+.card {
+    height: 300px;
+    margin-bottom: 2vh;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+.card:link {
+    color: rgba(0,0,0,0);
+}
+
+.overlay {
+    height: 300px;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color:rgba(255, 255, 255, 0);
+    font-size: 50px;
+}
+
+.overlay h1 {
+    margin: 0;
+    padding-top: 100px;
+}
+
+.overlay:hover {
+    transition: 1s;
+    background-color: rgba(0, 0, 0, 0.5);
+    color:rgb(255, 255, 255);
+}
+
+
 
 @media screen and (min-width: 40em) {
 
     .card {
-        margin: 0;
+        margin-bottom: 0;
     }
 
     section {
-        margin: 1rem;
-        display: grid;
-        grid-template-columns: auto auto;
-        gap: 1rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2vh;
     }
-}
 
-@media screen and (min-width: 60em) {
-
-    section {
-        grid-template-columns: auto auto auto;
-    }
 }

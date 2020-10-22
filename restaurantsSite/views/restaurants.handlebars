@@ -1,7 +1,9 @@
 <section>
     {{#each restaurants}}
-        <article style='background-image: url({{this.image}})' class="card">
-            <h1>{{this.name}}</h1>
-        </article>
+    <a href="/restaurant/{{this.id}}" style='background-image: url({{this.image}}); font-family: {{this.font}};' class="card">
+        <div class="overlay">
+        <h1>{{this.name}}</h1>
+        </div>
+    </a>
     {{/each}}
 <section>

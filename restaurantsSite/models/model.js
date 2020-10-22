@@ -6,7 +6,8 @@ class Restaurant extends Model {}
 
 Restaurant.init({
     name: DataTypes.STRING,
-    image: DataTypes.STRING
+    image: DataTypes.STRING,
+    font: DataTypes.STRING
 }, { sequelize, modelName: 'restaurant' })
 
 
