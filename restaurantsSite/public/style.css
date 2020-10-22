@@ -3,12 +3,14 @@ body {
     color: white;
 }
 
-.header {
-    border-bottom: 2px rgb(78, 78, 78) solid;
+.navbar {
     height: 10vh;
+    display: flex;
+    border-bottom: white 2px solid;
 }
 
-section {
+
+.restaurants {
     padding: 2vh;
     display: grid;
 }
@@ -25,15 +27,27 @@ section {
     color: rgba(0,0,0,0);
 }
 
+.addrest {
+    height: 300px;
+    margin-bottom: 2vh;
+    text-align: center;
+    border: 1px white solid;
+}
+
+.addrest:link {
+    color: rgba(0,0,0,0);
+}
+
 .overlay {
     height: 300px;
     margin: 0;
     background-color: rgba(0, 0, 0, 0);
     color:rgba(255, 255, 255, 0);
-    font-size: 50px;
+    font-size: 45px;
 }
 
 .overlay h1 {
+    font-weight: normal;
     margin: 0;
     padding-top: 100px;
 }
@@ -43,6 +57,118 @@ section {
     background-color: rgba(0, 0, 0, 0.5);
     color:rgb(255, 255, 255);
 }
+
+
+
+
+
+.over {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 1s;
+}
+  
+.over-content {
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    line-height: 200%;
+}
+
+.over-content button {
+    font-size: 110%;
+    margin-top: 2vh;
+	background-color:#818181cb;
+	border-radius:6px;
+	display:inline-block;
+	cursor:pointer;
+	color:#f1f1f1;
+	padding:6px 24px;
+}
+.over-content button:hover {
+    transition: .7s;
+    background-color:#f6f6f6c9;
+    color: #4b4b4b;
+}
+.over-content button:active {
+	position:relative;
+	top:1px;
+}
+.over .closebtn {
+    text-decoration: none;
+    color: #818181;
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+.over .closebtn:hover {
+    color: #f1f1f1;
+    transition: .7s;
+}
+
+
+
+
+
+.restimg {
+    height: 40vh;
+    background-position: center;
+    text-align: center;
+    background-size: cover;
+}
+
+.overlayimg {
+    font-size: 10vh;
+    padding-top: 12vh;
+    height: 40vh;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color:rgba(255, 255, 255, 0);
+}
+
+.overlayimg:hover {
+    transition: 1s;
+    background-color: rgba(0, 0, 0, 0.5);
+    color:rgb(255, 255, 255);
+}
+
+.menus {
+    text-align: center;
+}
+
+.menus h1 {
+    background: linear-gradient(90deg, rgba(0,0,0,0) 25%, rgba(255,255,255,0.5) 40%, rgba(255,255,255,0.5) 60%, rgba(0,0,0,0) 75%);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 100% 3px;
+    padding-bottom: 1vh;
+    font-size: 5vh;
+}
+
+.menus h2 {
+    line-height: 60%;
+}
+
+.menus h3 {
+    padding-bottom: 1.5vh;
+    line-height: 0%;
+    font-size: 1.5vh;
+}
+
+.menus h4 {
+    font-size: 3vh;
+}
+
 
 
 

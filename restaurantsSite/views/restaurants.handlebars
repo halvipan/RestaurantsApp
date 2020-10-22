@@ -1,4 +1,4 @@
-<section>
+<section class="restaurants">
     {{#each restaurants}}
     <a href="/restaurant/{{this.id}}" style='background-image: url({{this.image}}); font-family: {{this.font}};' class="card">
         <div class="overlay">
@@ -6,4 +6,51 @@
         </div>
     </a>
     {{/each}}
-<section>
+
+    <a class="addrest" style="cursor:pointer;font-family: 'Lato', sans-serif;" onclick="openForm()">
+        <div class="overlay">
+            <h1>create new restaurant</h1>
+        </div>
+    </a>
+
+</section>
+
+<div id="addform" class="over">
+<a href="javascript:void(0)" class="closebtn" onclick="closeForm()">&times;</a>
+
+    <div class="over-content">
+
+        <h1>Creating a new Restaurant</h1>
+
+        <form action="/restaurants/create" method="POST">
+        <div>
+            <label>Restaurant name:</label>
+            <input name="name" required/>
+        </div>
+        <div>
+            <label>Restaurant image:</label>
+            <input name="image" required/>
+        </div>
+        <div>
+            <label>Restaurant font:</label>
+            <input name="font" required/>
+        </div>
+        <button>Add Restaurant</button>
+        </form>
+
+    </div>
+</div>
+
+    
+
+
+
+<script>
+function openForm() {
+  document.getElementById("addform").style.width = "30%";
+}
+
+function closeForm() {
+  document.getElementById("addform").style.width = "0%";
+}
+</script>
