@@ -1,4 +1,4 @@
-<div style="background-image:url({{restaurant.image}});font-family:{{restaurant.font}}" class="restimg">
+<div style="background-image:url({{restaurant.image}});font-family:{{restaurant.font}};" class="restimg">
     <div class="overlayimg">
         {{restaurant.name}}
     </div>
@@ -6,30 +6,30 @@
 <section class="menus" style="font-family: {{restaurant.font}};">
     {{#each restaurant.menus}}
         <h1>{{this.title}}</h1>
-            {{#each this.items}}
-                <div>
-                    <h2>{{this.name}}</h2>
-                    <h3>£{{this.price}}</h3>
-                </div>
-            {{/each}}
-        <a onclick="openEditMenu()">
-            <button style="font-size:1.5vh;cursor:pointer;">edit menu</button>
+        {{#each this.items}}
+            <div>
+                <h2>{{this.name}}</h2>
+                <h3>£{{this.price}}</h3>
+            </div>
+        {{/each}}
+        <a onclick="openForm('{{this.id}}')">
+            <button class="but">edit {{this.title}} menu</button>
         </a>
-        <div id="editmenuform" class="over">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeEditMenu()">&times;</a>
+        <div id="editmenuform{{this.id}}" class="over">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeForm({{this.id}})">&times;</a>
 
             <div class="over-content">
 
                 <h4>Edit Menu</h4>
 
-                <form action="/restaurant/{{../restaurant.id}}/{{this.id}}/edit" method="POST">
+                <form action="/restaurant/{{../restaurant.id}}/{{this.id}}/editmenu" method="POST">
                 <div>
                     <label>Menu title:</label>
                     <input name="title" value="{{this.title}}"/>
                 </div>
                 <button>Update Menu</button>
-
                 </form>
+
                 <form action="/restaurant/{{../restaurant.id}}/{{this.id}}/additem" method="POST">
                 <div>
                     <label>add item name:</label>
@@ -42,6 +42,17 @@
                 <button>Add Item</button>
                 </form>
 
+                <form action="/restaurant/{{../restaurant.id}}/{{this.id}}/deleteitem" method="POST">
+                <div>
+                    <label>select item name:</label>
+                    <select name="id">
+                        {{#each this.items}}
+                            <option value="{{this.id}}">{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <button>Remove Item</button>
+                </form>
             </div>
         </div>
     {{/each}}
@@ -50,32 +61,59 @@
 
 
 
+<div class="footer">
+    <a onclick="openAny('editform')" style="cursor:pointer;">
+        <button class="but">edit restaurant</button>
+    </a>
 
-<a onclick="openEdit()" style="cursor:pointer;">
-    <h1>edit restaurant</h1>
-</a>
+    <a onclick="openAny('deleteform')" style="cursor:pointer;">
+        <button class="but">delete restaurant</button>
+    </a>
+</div>
+
+
 
 <div id="editform" class="over">
-<a href="javascript:void(0)" class="closebtn" onclick="closeEdit()">&times;</a>
+<a href="javascript:void(0)" class="closebtn" onclick="closeAny('editform')">&times;</a>
 
     <div class="over-content">
 
         <h1>Edit Restaurant</h1>
 
-        <form action="/restaurant/{{restaurant.id}}/edit" method="POST">
-        <div>
-            <label>Restaurant name:</label>
-            <input name="name" value="{{restaurant.name}}"/>
-        </div>
-        <div>
-            <label>Restaurant image:</label>
-            <input name="image" value="{{restaurant.image}}"/>
-        </div>
-        <div>
-            <label>Restaurant font:</label>
-            <input name="font" value="{{restaurant.font}}"/>
-        </div>
-        <button>Update Restaurant</button>
+        <form action="/restaurant/{{restaurant.id}}/editrest" method="POST">
+            <div>
+                <label>Restaurant name:</label>
+                <input name="name" value="{{restaurant.name}}"/>
+            </div>
+            <div>
+                <label>Restaurant image:</label>
+                <input name="image" value="{{restaurant.image}}"/>
+            </div>
+            <div>
+                <label>Restaurant font:</label>
+                <input name="font" value="{{restaurant.font}}"/>
+            </div>
+            <button>Update Restaurant</button>
+        </form>
+
+        <form action="/restaurant/{{restaurant.id}}/addmenu" method="POST">
+            <div>
+                <label>add menu title:</label>
+                <input name="title"/>
+            </div>
+            <button>Add Menu</button>
+        </form>
+
+        <form action="/restaurant/{{restaurant.id}}/deletemenu" method="POST">
+            <div>
+                <label>select menu name:</label>
+                <select name="id">
+                    {{#each restaurant.menus}}
+                        <option value="{{this.id}}">{{this.title}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <button>Remove Menu</button>
         </form>
 
     </div>
@@ -83,20 +121,14 @@
 
 
 
-
-
-<a onclick="openDelete()" style="cursor:pointer;">
-    <h1>delete restaurant</h1>
-</a>
-
 <div id="deleteform" class="over">
-<a href="javascript:void(0)" class="closebtn" onclick="closeDelete()">&times;</a>
+<a href="javascript:void(0)" class="closebtn" onclick="closeAny('deleteform')">&times;</a>
 
     <div class="over-content">
 
         <h1>Are you sure you would like to delete this Restaurant</h1>
 
-        <form action="/restaurant/{{restaurant.id}}/delete" method="GET">
+        <form action="/restaurant/{{restaurant.id}}/deleterest" method="POST">
         <button>Yes</button>
         </form>
 
@@ -108,29 +140,19 @@
 
 
 <script>
-function openEdit() {
-  document.getElementById("editform").style.width = "30%";
+function openAny(id) {
+    document.getElementById(id).style.width = "30%";
 }
 
-function closeEdit() {
-  document.getElementById("editform").style.width = "0%";
+function closeAny(id) {
+    document.getElementById(id).style.width = "0%";
 }
 
-
-function openDelete() {
-  document.getElementById("deleteform").style.width = "30%";
+function openForm(id) {
+    document.getElementById("editmenuform" + id).style.width = "30%";
 }
 
-function closeDelete() {
-  document.getElementById("deleteform").style.width = "0%";
-}
-
-
-function openEditMenu() {
-  document.getElementById("editmenuform").style.width = "30%";
-}
-
-function closeEditMenu() {
-  document.getElementById("editmenuform").style.width = "0%";
+function closeForm(id) {
+    document.getElementById("editmenuform" + id).style.width = "0%";
 }
 </script>

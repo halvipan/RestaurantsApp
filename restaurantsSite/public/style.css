@@ -1,17 +1,40 @@
 body {
     background-color: black;
     color: white;
+    margin: 0;
 }
 
 .navbar {
-    height: 10vh;
+    position: fixed;
+    width: 100vw;
+    padding-top: 1vh;
+    background-color: black;
     display: flex;
-    border-bottom: white 2px solid;
+    padding-left: 2vh;
+    height: 5vh;
+    font-size: 3.5vh;
+}
+
+.navbar a {
+    align-self: center;
+    font-family: 'Lato', sans-serif;
+    color: #4b4b4b;
+    text-decoration: none;
+    transition: .7s;
+}
+
+.navbar a:hover {
+    transition: .7s;
+    color: #f1f1f1;
 }
 
 
+
+
+
 .restaurants {
-    padding: 2vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
     display: grid;
 }
 
@@ -86,22 +109,20 @@ body {
 .over-content button {
     font-size: 110%;
     margin-top: 2vh;
-	background-color:#818181cb;
-	border-radius:6px;
+    border: none;
+    border-radius: 1vh;
+    background-color:#81818144;
 	display:inline-block;
 	cursor:pointer;
-	color:#f1f1f1;
+	color:#f1f1f19c;
 	padding:6px 24px;
 }
+
 .over-content button:hover {
     transition: .7s;
-    background-color:#f6f6f6c9;
-    color: #4b4b4b;
+    background-color: #8181812f;
 }
-.over-content button:active {
-	position:relative;
-	top:1px;
-}
+
 .over .closebtn {
     text-decoration: none;
     color: #818181;
@@ -143,10 +164,12 @@ body {
 }
 
 .menus {
+    font-weight: lighter;
     text-align: center;
 }
 
 .menus h1 {
+    font-weight: normal;
     background: linear-gradient(90deg, rgba(0,0,0,0) 25%, rgba(255,255,255,0.5) 40%, rgba(255,255,255,0.5) 60%, rgba(0,0,0,0) 75%);
     background-position: bottom;
     background-repeat: no-repeat;
@@ -156,19 +179,43 @@ body {
 }
 
 .menus h2 {
+    font-weight: normal;
     line-height: 60%;
 }
 
 .menus h3 {
+    font-weight: normal;
     padding-bottom: 1.5vh;
     line-height: 0%;
     font-size: 1.5vh;
 }
 
 .menus h4 {
+    font-weight: normal;
     font-size: 3vh;
 }
 
+.but {
+    border: none;
+    font-size: 80%;
+    margin-top: 2vh;
+	background-color:#81818144;
+	border-radius:6px;
+	cursor:pointer;
+	color:#f1f1f19c;
+	padding:2px 12px;
+}
+
+.but:hover {
+    transition: .7s;
+    background-color:#8181812f;
+}
+
+.footer {
+    margin: 7vh;
+    display: flex;
+    justify-content: space-evenly;
+}
 
 
 
